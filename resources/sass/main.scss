@@ -1,0 +1,44 @@
+/**
+	* SASS File Name: main.scss
+	* Version: 1.0
+	* Author: GoCoS
+	* Author URI: http://www.gocos.be/
+**/
+
+/*-------------*/
+/*-- Imports --*/
+/*-------------*/
+@import 'bootstrap/bootstrap';
+@import "fontawsome/fontawesome";
+@import "fontawsome/solid";
+
+/*-------------*/
+/*-- General --*/
+/*-------------*/
+.text-center {
+  text-align: center;
+}
+
+.totaal-overzicht {
+    background: lightgray;
+}
+
+.mijn-account-menu {
+    background: lightgray;
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        color: black;
+        text-decoration: none;
+    }
+    a:hover {
+        font-weight: bold;
+    }
+}
+
+.menu-active {
+    font-weight: bold;
+}
