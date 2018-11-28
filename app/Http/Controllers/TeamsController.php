@@ -50,7 +50,7 @@ class TeamsController extends Controller
         $arr_team->user_id      = Auth::user()->id;
         $arr_team->save();
 
-        return redirect(route('mijn-account.teams.index'));
+        return redirect(route('mijn-account.teams'));
     }
 
     /**
@@ -90,9 +90,21 @@ class TeamsController extends Controller
      * @param  \App\Teams  $teams
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Teams $teams)
+    public function destroy($id)
     {
-        //
+        $arr_team   = Teams::find($id);
+        $user       = Auth::user();
+
+        if($arr_team->user_id == $user->id) {
+            if(count($arr_team->relDeelnemers)>0) {
+                return redirect()->back()->with('status','teamnotempty');
+            }
+            else {
+                $arr_team->delete();
+            }
+        }
+
+        return redirect(route('mijn-account.teams'));
     }
 
     /**

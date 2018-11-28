@@ -38,10 +38,10 @@ Route::prefix('mijn-account')->group(function(){
     Route::put('/inschrijvingen/aanpassen/{referentie}','DeelnemersController@update')->name('mijn-account.inschrijvingen.edit');
     Route::get('/teams', 'TeamsController@index')->middleware('auth')->name('mijn-account.teams');
     Route::get('/teams/nieuw','TeamsController@create')->name('mijn-account.teams.create');
-    Route::post('/teams/nieuw','TeamsController@create')->name('mijn-account.teams.store');
+    Route::post('/teams/nieuw','TeamsController@store')->name('mijn-account.teams.store');
     Route::get('/teams/aanpassen/{id}','TeamsController@edit')->name('mijn-account.teams.edit');
     Route::put('/teams/aanpassen/{id}','TeamsController@update')->name('mijn-account.teams.update');
-    Route::post('/teams/verwijder/{id}','TeamsController@destroy')->name('mijn-account.teams.destroy');
+    Route::get('/teams/verwijder/{id}','TeamsController@destroy')->name('mijn-account.teams.destroy');
 });
 
 /*

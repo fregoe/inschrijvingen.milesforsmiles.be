@@ -6,6 +6,11 @@
     <div class="row mt-2">
         @include('front.inc.mijn-account-menu')
         <div class="col-7">
+            @if(session('status') && session('status') == "teamnotempty")
+                <div class="alert alert-danger">
+                    U kunt geen team verwijderen waar nog deelnemers in zitten.
+                </div>
+            @endif
             <div class="row mb-3">
                 <div class="col-4 d-none d-lg-block">
                     Naam
