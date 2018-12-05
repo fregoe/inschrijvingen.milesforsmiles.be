@@ -13,29 +13,128 @@
 @import "fontawsome/solid";
 
 /*-------------*/
+/*--  Fonts  --*/
+/*-------------*/
+@font-face {
+    font-family: "Extra-bold";
+    src: url("../fonts/HouschkaRounded-ExtraBold.woff2") format("woff2"), url("../fonts/HouschkaRounded-ExtraBold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Bold";
+    src: url("../fonts/HouschkaRounded-Bold.woff2") format("woff2"), url("../fonts/HouschkaRounded-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Medium";
+    src: url("../fonts/HouschkaRounded-Medium.woff2") format("woff2"), url("../fonts/HouschkaRounded-Medium.woff") format("woff");
+}
+
+@font-face {
+    font-family: "Mono";
+    src: url("../fonts/pt-mono.woff2") format("woff2"), url("../fonts/pt-mono.woff") format("woff");
+}
+
+/*-------------*/
 /*-- General --*/
 /*-------------*/
+
+a, a:hover, a:focus {
+    color: black;
+    text-decoration: none;
+}
+
+h1 {
+    font-family: Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.subtitle {
+    font-family: Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.small-text {
+  font-family: Medium;
+  font-size: 14px;
+}
+
+.text {
+    font-family: Medium;
+    font-size: 18px;
+}
+
 .text-center {
   text-align: center;
 }
 
 .totaal-overzicht {
-    background: lightgray;
+    background: black;
+    border-radius: 15px;
+    color: #fff32a;
 }
 
+.btn-submit,.btn-submit:hover {
+    background-color: black;
+    color: yellow;
+    border-color: black;
+    font-family: bold;
+    font-size: 16px
+}
+
+.btn-icon, .btn-icon:hover {
+    color: black;
+}
+
+.input-text, .input-text:focus {
+    color:#fff32a;
+    background-color: black;
+}
+
+.container-milesforsmiles {
+    background-color: #fff32a;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.error {
+    background: black;
+    border-radius: 15px;
+    color: #fff32a;
+    font-family: Medium;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+.login {
+    background-color: #fff32a;
+    border-radius: 25px;
+    padding: 25px;
+}
+
+.pt-2 {
+    padding-top: 2rem;
+}
+
+/*-------------*/
+/*-- Account --*/
+/*-------------*/
+
 .mijn-account-menu {
-    background: lightgray;
+    background: black;
+    border-radius: 15px;
+    color: #fff32a;
+    padding: 25px;
     ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
     }
-    a {
-        color: black;
+    a, a:hover, a:visited {
+        color: #fff32a;
         text-decoration: none;
-    }
-    a:hover {
-        font-weight: bold;
     }
 }
 

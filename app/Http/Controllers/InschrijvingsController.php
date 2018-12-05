@@ -64,7 +64,7 @@ class InschrijvingsController extends Controller
 
         //Create user if it doesn't exists
         if(!isset($user)){
-            $user = new User();
+            $user           = new User();
             $user->email    = $request->email_administratief;
             $user->save();
             $user->sendWelcomeEmail();

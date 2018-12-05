@@ -5,7 +5,7 @@
                 <li>{{ $error }}</li>
             @endforeach
             @if($voucherError == true)
-                <li>Voucher code reeds gebruikt</li>
+                <li>@lang('')/li>
             @endif
         </ul>
     </div>

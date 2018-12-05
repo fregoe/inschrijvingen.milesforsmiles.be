@@ -52,10 +52,10 @@
     <div class="row mb-3">
         <div class="col-lg-7 col-12 mb-1"></div>
         <div class="col-lg-3 col-12 mb-1">
-            <input name="referentienr" id="referentienr" class="form-control">
+            <input name="referentienr" id="referentienr" class="form-control input-text">
         </div>
         <div class="col-lg-2 col-12">
-            <button type="submit" class="btn btn-primary" id="add_teamlid" data-teamid="{{ $arr_team->id }}">Voeg toe</button>
+            <button type="submit" class="btn btn-primary btn-submit" id="add_teamlid" data-teamid="{{ $arr_team->id }}">Voeg toe</button>
         </div>
     </div>
 @endif

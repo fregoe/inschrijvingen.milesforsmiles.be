@@ -15,9 +15,13 @@ trait traitVouchers
     public function checkVoucherUsed($voucherCode)
     {
         $arr_voucher = Vouchers::where('code',$voucherCode)->first();
-
-        if($arr_voucher->gebruikt == 'N' && $arr_voucher->deelnemer_id == null) {
-            return false;
+        if(isset($arr_voucher)) {
+            if($arr_voucher->gebruikt == 'N' && $arr_voucher->deelnemer_id == null) {
+                return false;
+            }
+            else {
+                return true;
+            }
         }
         else {
             return true;

@@ -1,30 +1,35 @@
 @extends('front.inc.master')
 
 @section('content')
-    <h1 class="text-center">Inschrijvingen Miles for Smiles 2019</h1>
-    <div class="row mt-5">
-        <p class="text-left"><strong>Schrijf hieronder één of meerdere deelnemers in.</strong></p>
-        <div class="col-12" id="div_tbl_inschrijvingen">
-            @include('front.inc.tbl_inschrijvingen')
+    <div class="container container-milesforsmiles">
+        <div class="row">
+            <div class="col-12">
+                <p class="text-left subtitle">@lang('front.inschrijvingen.subtitle')</p>
+            </div>
+            <div class="col-12" id="div_tbl_inschrijvingen">
+                @include('front.inc.tbl_inschrijvingen')
+            </div>
         </div>
-    </div>
-    <div class="row mt-5">
-        <p class="text-left"><strong>Gegevens inschrijver</strong></p>
-        <div class="col-12">
-            <form action="{{ route('inschrijving.submit') }}" method="post">
-                @csrf
-                <div class="row">
-                    <div class="col-12 col-lg-6">
-                        <label for="email">E-mailadres</label>
-                        <input type="text" id="email-administratief" name="email_administratief" class="form-control" value="{{ $arr_deelnemers[0]->email ?? '' }}">
+        <div class="row mt-5">
+            <div class="col-12">
+                <p class="text-left subtitle">@lang('front.inschrijvingen.section1')</p>
+            </div>
+            <div class="col-12">
+                <form action="{{ route('inschrijving.submit') }}" method="post">
+                    @csrf
+                    <div class="row">
+                        <div class="col-12 col-lg-6">
+                            <label for="email" class="text">@lang('front.inschrijvingen.fields.email.label')</label>
+                            <input type="text" id="email-administratief" name="email_administratief" class="form-control text  input-text" value="{{ $arr_deelnemers[0]->email ?? '' }}">
+                        </div>
                     </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-6">
-                        <button type="submit" class="btn btn-primary">Bevestig en betaal</button>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary btn-submit">@lang('front.inschrijvingen.fields.submit.text')</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
 @stop
