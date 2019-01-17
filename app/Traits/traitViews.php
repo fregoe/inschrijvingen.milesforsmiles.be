@@ -47,13 +47,14 @@ trait traitViews
      * @param bool $unknownDeelnemer
      * @return array
      */
-    public function getTeamledenData(Teams $arr_team, $alreadyLinked = false, $maxTeamleden = false, $unknownDeelnemer = false)
+    public function getTeamledenData(Teams $arr_team, $alreadyLinked = false, $maxTeamleden = false, $unknownDeelnemer = false, $hasNotPaid = false)
     {
         $data = [
             'arr_team'         => $arr_team,
             'alreadyLinked'    => $alreadyLinked,
             'maxTeamleden'     => $maxTeamleden,
-            'unknownDeelnemer' => $unknownDeelnemer
+            'unknownDeelnemer' => $unknownDeelnemer,
+            'hasNotPaid'       => $hasNotPaid
         ];
 
         return $data;

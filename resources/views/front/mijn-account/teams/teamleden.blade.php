@@ -1,16 +1,21 @@
 @if($alreadyLinked == true)
-    <div class="alert alert-danger mt-2">
+    <div class="error mt-2">
         De opgegeven deelnemer is reeds gelinkt aan een ander team.
     </div>
 @endif
 @if($maxTeamleden == true)
-    <div class="alert alert-danger mt-2">
+    <div class="error mt-2">
         Het team bestaat reeds uit 4 leden.
     </div>
 @endif
 @if($unknownDeelnemer == true)
-    <div class="alert alert-danger mt-2">
+    <div class="error mt-2">
         De opgegeven deelnemer werd niet teruggevonden.
+    </div>
+@endif
+@if($hasNotPaid == true)
+    <div class="error mt-2">
+        De betaling voor de opgegeven deelnemer werd niet teruggevonden.
     </div>
 @endif
 <div class="row mb-3 mt-3">
@@ -24,7 +29,7 @@
         Voornaam
     </div>
     <div class="col-3 d-none d-lg-block">
-        Referentienr
+        Lopercode
     </div>
 </div>
 @if (isset($arr_team->relDeelnemers) && count($arr_team->relDeelnemers)>0)

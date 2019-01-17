@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Request;
 
 use App\Models\Orders;
 
+use App\Traits\traitMails;
+
 class PaymentController extends Controller
 {
+    use traitMails;
     /**
      * @param Request $request
      */
@@ -22,6 +25,8 @@ class PaymentController extends Controller
             $arr_order->save();
 
             //Send mail
+            $this->sendDeelnemerMails($arr_order);
+            $this->sendInschrijverMails($arr_order);
         }
     }
 }

@@ -128,7 +128,8 @@ return [
     'custom' => [
         'email' => [
             'unique'    => 'Er is reeds een deelnemer ingeschreven met dit e-mailadres.',
-            'email'     => 'Gelieve een geldig e-mailadres in te vullen.'
+            'email'     => 'Gelieve een geldig e-mailadres in te vullen.',
+            'required'  => 'Uw email is verplicht in te vullen. Er kunnen meerdere deelnemers onder hetzelfde mailadres ingeschreven worden.'
         ],
         'email_administratief' => [
             'unique'    => 'Er is reeds een gebruiker met dit e-mailadres.',

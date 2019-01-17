@@ -13,12 +13,13 @@ use App\Models\User;
 
 use App\Traits\traitViews;
 use App\Traits\traitPayment;
-
+use App\Traits\traitMails;
 
 class InschrijvingsController extends Controller
 {
     use traitViews;
     use traitPayment;
+    use traitMails;
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -35,7 +36,7 @@ class InschrijvingsController extends Controller
     {
         $arr_order = Orders::where('uuid',session('ss_order_id'))->first();
 
-        if($arr_order->betaal_status == 'Open' || $arr_order->betaal_status == 'Canceled') {
+        if(isset($arr_order) && ($arr_order->betaal_status == 'Open' || $arr_order->betaal_status == 'Canceled')) {
             return redirect(route('index'));
         }
         else {
@@ -79,15 +80,23 @@ class InschrijvingsController extends Controller
         $arr_order->betaal_status  = 'Open';
         $arr_order->save();
 
-        //Create payment
-        $payment = $this->doPayment($arr_order);
+        //Create payment if the amount is more then 0
+        if($arr_order->totaal > 0) {
+            $payment = $this->doPayment($arr_order);
 
-        //Save payment id in order
-        $arr_order->betaal_referentie = $payment->id;
-        $arr_order->save();
+            //Save payment id in order
+            $arr_order->betaal_referentie = $payment->id;
+            $arr_order->save();
 
-        // Redirect to payment page
-        return redirect($payment->getCheckoutUrl(), 303);
+            // Redirect to payment page
+            return redirect($payment->getCheckoutUrl(), 303);
+        }
+        //Else redirect to order success page
+        else {
+            $this->sendDeelnemerMails($arr_order);
+            $this->sendInschrijverMails($arr_order);
+            return redirect(route('order.success'));
+        }
     }
 
     /**

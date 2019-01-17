@@ -56,6 +56,8 @@ Route::post('/webhooks/mollie','PaymentController@mollieWebhook')->name('webhook
 Route::get('mijn-account/inloggen','Auth\LoginController@showLoginForm')->name('login');
 Route::post('mijn-account/inloggen','Auth\LoginController@login')->name('login.submit');
 Route::get('/mijn-account/uitloggen','Auth\LoginController@logout')->name('logout');
+Route::get('mijn-account/nieuwe-gebruiker','Auth\LoginController@showNewUserForm')->name('user.new');
+Route::post('mijn-account/nieuwe-gebruiker','Auth\LoginController@newUser')->name('user.new.submit');
 Route::get('/mijn-account/wachtwoord-vergeten','Auth\ForgotPasswordController@showForgetPage')->name('password.forgotten');
 Route::post('/mijn-account/wachtwoord-vergeten','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.resetmail');
 Route::get('/mijn-account/wachtwoord-opnieuw-instellen','Auth\ResetPasswordController@showResetForm')->name('password.reset');

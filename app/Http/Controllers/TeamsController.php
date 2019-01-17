@@ -44,6 +44,9 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
+        if($request->goed_doel == 0) {
+            return redirect()->back()->with('status','no_doel')->withInput();
+        }
         $arr_team               = new Teams();
         $arr_team->naam         = $request->naam;
         $arr_team->goed_doel    = $request->goed_doel;
@@ -120,21 +123,24 @@ class TeamsController extends Controller
         if(count($arr_team->relDeelnemers)<4) {
             $arr_deelnemer = Deelnemers::where('referentienr',$request->referentienr)->first();
             if(isset($arr_deelnemer)){
-                if($arr_deelnemer->team_id == null) {
+                if($arr_deelnemer->team_id == null && $arr_deelnemer->hasPaid() == true) {
                     Deelnemers::where('referentienr', $request->referentienr)->update(['team_id' => $arr_team->id]);
                     $arr_team->refresh();
                     return view('front.mijn-account.teams.teamleden', $this->getTeamledenData($arr_team))->render();
                 }
+                elseif($arr_deelnemer->hasPaid() == false) {
+                    return view('front.mijn-account.teams.teamleden',$this->getTeamledenData($arr_team,false,false, false,true))->render();
+                }
                 else {
-                    return view('front.mijn-account.teams.teamleden',$this->getTeamledenData($arr_team,true,false, false))->render();
+                    return view('front.mijn-account.teams.teamleden',$this->getTeamledenData($arr_team,true,false, false,false))->render();
                 }
             }
             else {
-                return view('front.mijn-account.teams.teamleden',$this->getTeamledenData($arr_team,false,false, true ))->render();
+                return view('front.mijn-account.teams.teamleden',$this->getTeamledenData($arr_team,false,false, true,false ))->render();
             }
         }
         else {
-            return view('front.mijn-account.teams.teamleden',$this->getTeamledenData($arr_team,false,true, false))->render();
+            return view('front.mijn-account.teams.teamleden',$this->getTeamledenData($arr_team,false,true, false,false))->render();
         }
 
         return view('front.mijn-account.teams.teamleden',['arr_team' => $arr_team])->render();

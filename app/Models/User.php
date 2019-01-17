@@ -50,4 +50,19 @@ class User extends Authenticatable
         Mail::to($this->email)
             ->send(new UserWelcomeMail($this,$url));
     }
+
+    public function getBetaaldeDeelnemers()
+    {
+        $col_deelnemers = $this->relDeelnemers;
+
+        $col_paidDeelnemers = collect(new Deelnemers);
+
+        foreach($col_deelnemers as $deelnemer) {
+            if($deelnemer->relOrder->betaal_status == 'paid' || $deelnemer->voucher_id !== null) {
+                $col_paidDeelnemers->push($deelnemer);
+            }
+        }
+
+        return $col_paidDeelnemers;
+    }
 }

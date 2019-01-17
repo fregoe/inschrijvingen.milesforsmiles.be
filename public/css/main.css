@@ -15360,10 +15360,20 @@ h1 {
   font-size: 30px;
 }
 
+@media (max-width: 550px) {
+  h1 {
+    font-size: 15px;
+  }
+}
+
 .subtitle {
   font-family: Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
   font-weight: 400;
   font-size: 20px;
+}
+
+.text-blue {
+  color: blue;
 }
 
 .small-text {
@@ -15429,6 +15439,33 @@ h1 {
 
 .pt-2 {
   padding-top: 2rem;
+}
+
+.step-active {
+  background-color: black;
+  color: #fff32a;
+}
+
+.step-active a,
+.step-active a:hover,
+.step-active a:focus {
+  color: #fff32a;
+  text-decoration: none;
+}
+
+.step-not-active {
+  background-color: #fff32a;
+  color: black;
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.step-not-active a,
+.step-not-active a:hover,
+.step-not-active a:focus {
+  color: black;
+  text-decoration: none;
 }
 
 /*-------------*/

@@ -1,6 +1,14 @@
 <?php
 
 return [
-    'price' => 15,
-    'from_mail' => 'inschrijvingen@milesforsmiles.be'
+    'price' => 25,
+    'from_mail' => 'inschrijvingen@milesforsmiles.be',
+    'from_subject_deelnemer' => 'Bedankt voor uw inschrijving voor Miles for Smiles 2019',
+    'from_subject_inschrijver' => 'Bedankt voor uw inschrijvingen voor Miles for Smiles 2019',
+    'goede_doelen' => [
+        '1' => 'De Doorzetters',
+        '2' => 'De Kade',
+        '3' => 'Mug Heli',
+        '4' => 'Oranje'
+    ]
 ];

@@ -28,7 +28,6 @@ $.ajaxSetup({
 
 $('#div_tbl_inschrijvingen').on("click","#add_inschrijving", function (e) {
     e.preventDefault();
-    console.log('add inschrijving geklikt');
 
     data = {
         naam :      $('#naam').val(),
@@ -54,7 +53,6 @@ $('#div_tbl_inschrijvingen').on("click","#add_inschrijving", function (e) {
 
 $('#div_tbl_inschrijvingen').on("click","#edit_inschrijving", function (e) {
     e.preventDefault();
-    console.log('edit inschrijving geklikt');
 
     data = {
         referentie :      $(this).data("referentie"),
@@ -74,7 +72,6 @@ $('#div_tbl_inschrijvingen').on("click","#edit_inschrijving", function (e) {
 
 $('#div_tbl_inschrijvingen').on("click","#update_inschrijving", function (e) {
     e.preventDefault();
-    console.log('update inschrijving geklikt');
 
     data = {
 
@@ -101,7 +98,6 @@ $('#div_tbl_inschrijvingen').on("click","#update_inschrijving", function (e) {
 
 $('#div_tbl_inschrijvingen').on("click","#remove_inschrijving", function (e) {
     e.preventDefault();
-    console.log('remove inschrijving geklikt');
 
     data = {
         referentie :      $(this).data("referentie"),
@@ -121,7 +117,6 @@ $('#div_tbl_inschrijvingen').on("click","#remove_inschrijving", function (e) {
 
 $('#div_tbl_teamleden').on("click","#add_teamlid", function (e) {
     e.preventDefault();
-    console.log('add teamlid geklikt');
 
     data = {
         referentienr :  $('#referentienr').val(),
@@ -142,7 +137,6 @@ $('#div_tbl_teamleden').on("click","#add_teamlid", function (e) {
 
 $('#div_tbl_teamleden').on("click","#remove_teamlid", function (e) {
     e.preventDefault();
-    console.log('remove teamlid geklikt');
 
     data = {
         referentienr :  $(this).data("referentienr"),

@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserResetPasswordMail;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -72,5 +75,43 @@ class LoginController extends Controller
 
         // if unsuccessful, then redirect back to the login with the form data
         return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showNewUserForm()
+    {
+        return view('front.newuser');
+    }
+
+    public function newUser(Request $request)
+    {
+        // Validate the form data
+        $this->validate($request, [
+            'email'     => 'required'
+        ]);
+
+        $user = User::where('email',$request->email)->first();
+
+        if(isset($user)) {
+            // Generate a new reset password token
+            $token = app('auth.password.broker')->createToken($user);
+            $url   = route('password.reset')."?token=".$token;
+
+            // Send email
+            Mail::to($user->email)
+                ->send(new UserResetPasswordMail($user,$url));
+
+            return redirect()->back()->with('status','user_exists');
+        }
+        else {
+            $user           = new User();
+            $user->email    = $request->email;
+            $user->save();
+            $user->sendWelcomeEmail();
+
+            return redirect()->back()->with('status','user_created');
+        }
     }
 }

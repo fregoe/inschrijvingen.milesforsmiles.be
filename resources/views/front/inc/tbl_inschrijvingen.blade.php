@@ -18,10 +18,10 @@
         #
     </div>
     <div class="col-2 d-none d-lg-block">
-        @lang('front.tbl_inschrijvingen.header.name')
+        @lang('front.tbl_inschrijvingen.header.firstname')
     </div>
     <div class="col-2 d-none d-lg-block">
-        @lang('front.tbl_inschrijvingen.header.firstname')
+        @lang('front.tbl_inschrijvingen.header.name')
     </div>
     <div class="col-4 d-none d-lg-block">
         @lang('front.tbl_inschrijvingen.header.email')
@@ -41,10 +41,10 @@
                     {{ $key+1 }}
                 </div>
                 <div class="col-lg-2 col-12 mb-1">
-                    <input type="text" class="form-control input-text" id="edit_naam" value="{{ $deelnemer->naam }}">
+                    <input type="text" class="form-control input-text" id="edit_voornaam" value="{{ $deelnemer->voornaam }}">
                 </div>
                 <div class="col-lg-2 col-12 mb-1">
-                    <input type="text" class="form-control input-text" id="edit_voornaam" value="{{ $deelnemer->voornaam }}">
+                    <input type="text" class="form-control input-text" id="edit_naam" value="{{ $deelnemer->naam }}">
                 </div>
                 <div class="col-lg-4 col-12 mb-1">
                     <input type="text" class="form-control input-text" id="edit_email" value="{{ $deelnemer->email }}">
@@ -65,10 +65,10 @@
                     {{ $key+1 }}
                 </div>
                 <div class="col-lg-2 col-12 mb-1">
-                    {{ $deelnemer->naam }}
+                    {{ $deelnemer->voornaam }}
                 </div>
                 <div class="col-lg-2 col-12 mb-1">
-                    {{ $deelnemer->voornaam }}
+                    {{ $deelnemer->naam }}
                 </div>
                 <div class="col-lg-4 col-12 mb-1">
                     {{ $deelnemer->email }}
@@ -90,10 +90,10 @@
 
     </div>
     <div class="col-lg-2 col-12 mb-2">
-        <input type="text" class="form-control input-text" id="naam" value="{{ $oldData['naam'] ?? '' }}" placeholder="Naam">
+        <input type="text" class="form-control input-text" id="voornaam" value="{{ $oldData['voornaam'] ?? '' }}" placeholder="Voornaam">
     </div>
     <div class="col-lg-2 col-12 mb-2">
-        <input type="text" class="form-control input-text" id="voornaam" value="{{ $oldData['voornaam'] ?? '' }}" placeholder="Voornaam">
+        <input type="text" class="form-control input-text" id="naam" value="{{ $oldData['naam'] ?? '' }}" placeholder="Naam">
     </div>
     <div class="col-lg-4 col-12 mb-2">
         <input type="text" class="form-control input-text" id="email" value="{{ $oldData['email'] ?? '' }}" placeholder="E-mail">
