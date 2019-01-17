@@ -1,7 +1,7 @@
 Beste {{ $inschrijver->email }},<br><br>
 U heeft volgende deelnemers ingeschreven:<br>
 @foreach($deelnemers as $key => $deelnemer)
-    {{ $key+1.'. '.$deelnemer->voornaam.' '.$deelnemer->naam.' '.$deelnemer->email.' '.$deelnemer->referentienr }}<br>
+    {{ ($key+1).'. '.$deelnemer->voornaam.' '.$deelnemer->naam.' '.$deelnemer->email.' '.$deelnemer->referentienr }}<br>
 @endforeach
 <br>
 Nu uw deelnemers ingeschreven zijn, kunnen ze met hun vrienden een team vormen en samen voor een goed doel lopen. Ze hebben daarenboven op het opgegeven mailadres individueel hun lopercode ontvangen.<br><br>
