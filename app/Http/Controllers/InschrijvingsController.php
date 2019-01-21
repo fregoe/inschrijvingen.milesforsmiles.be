@@ -93,6 +93,10 @@ class InschrijvingsController extends Controller
         }
         //Else redirect to order success page
         else {
+            //Set order as paid
+            $arr_order->betaal_status = 'paid';
+            $arr_order->save();
+
             $this->sendDeelnemerMails($arr_order);
             $this->sendInschrijverMails($arr_order);
             return redirect(route('order.success'));
