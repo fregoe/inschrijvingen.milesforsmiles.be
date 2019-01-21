@@ -56,16 +56,14 @@
 @if(count($arr_team->relDeelnemers) < 4)
     <div class="row mb-3">
         <div class="col-lg-1 col-12 mb-1"></div>
-        <div class="col-lg-6 col-12 mb-1">
-            <select class="form-control input-text" name="deelnemer" id="deelnemer">
+        <div class="col-lg-8 col-12 mb-1">
+            <input name="referentienr" id="referentienr" class="form-control input-text" list="deelnemers" placeholder="Vul een lopercode in of kies uit de lijst">
+            <datalist id="deelnemers">
                 <option value="">@lang('front.teamleden.select')</option>
                 @foreach($arr_deelnemers as $deelnemer)
                     <option value="{{ $deelnemer->referentienr }}">{{ $deelnemer->voornaam.' '.$deelnemer->naam.' ('.$deelnemer->referentienr.')' }}</option>
                 @endforeach
-            </select>
-        </div>
-        <div class="col-lg-3 col-12 mb-1">
-            <input name="referentienr" id="referentienr" class="form-control input-text">
+            </datalist>
         </div>
         <div class="col-lg-2 col-12">
             <button type="submit" class="btn btn-primary btn-submit" id="add_teamlid" data-teamid="{{ $arr_team->id }}">Voeg toe</button>
