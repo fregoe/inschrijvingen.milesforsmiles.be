@@ -120,6 +120,7 @@ $('#div_tbl_teamleden').on("click","#add_teamlid", function (e) {
 
     data = {
         referentienr :  $('#referentienr').val(),
+        deelnemer :  $('#deelnemer').val(),
         teamid :        $(this).data("teamid"),
     }
 

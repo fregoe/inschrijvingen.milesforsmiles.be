@@ -25,7 +25,7 @@ return [
         ]
     ],
     'menu' => [
-        'subscription' => 'Inschrijven Run & Party',
+        'subscription' => 'Inschrijven Run&Party',
         'logon' => 'Aanmelden',
         'teams' => 'Teams vormen'
     ],
@@ -73,5 +73,8 @@ return [
         'messages' => [
             'no_doel' => 'Er werd geen goed doel gekozen.'
         ]
+    ],
+    'teamleden' => [
+        'select' => 'Kies een deelnemer'
     ]
 ];

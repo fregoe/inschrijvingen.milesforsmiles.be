@@ -55,7 +55,15 @@
 @endif
 @if(count($arr_team->relDeelnemers) < 4)
     <div class="row mb-3">
-        <div class="col-lg-7 col-12 mb-1"></div>
+        <div class="col-lg-1 col-12 mb-1"></div>
+        <div class="col-lg-6 col-12 mb-1">
+            <select class="form-control input-text" name="deelnemer" id="deelnemer">
+                <option value="">@lang('front.teamleden.select')</option>
+                @foreach($arr_deelnemers as $deelnemer)
+                    <option value="{{ $deelnemer->referentienr }}">{{ $deelnemer->voornaam.' '.$deelnemer->naam.' ('.$deelnemer->referentienr.')' }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="col-lg-3 col-12 mb-1">
             <input name="referentienr" id="referentienr" class="form-control input-text">
         </div>

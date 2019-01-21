@@ -3,6 +3,7 @@
 namespace App\Traits;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Orders;
 use App\Models\Teams;
@@ -49,12 +50,17 @@ trait traitViews
      */
     public function getTeamledenData(Teams $arr_team, $alreadyLinked = false, $maxTeamleden = false, $unknownDeelnemer = false, $hasNotPaid = false)
     {
+        $arr_deelnemers = Deelnemers::where('user_id',Auth::user()->id)
+            ->where('team_id',null)
+            ->get();
+
         $data = [
-            'arr_team'         => $arr_team,
-            'alreadyLinked'    => $alreadyLinked,
-            'maxTeamleden'     => $maxTeamleden,
-            'unknownDeelnemer' => $unknownDeelnemer,
-            'hasNotPaid'       => $hasNotPaid
+            'arr_team'          => $arr_team,
+            'arr_deelnemers'    => $arr_deelnemers,
+            'alreadyLinked'     => $alreadyLinked,
+            'maxTeamleden'      => $maxTeamleden,
+            'unknownDeelnemer'  => $unknownDeelnemer,
+            'hasNotPaid'        => $hasNotPaid,
         ];
 
         return $data;

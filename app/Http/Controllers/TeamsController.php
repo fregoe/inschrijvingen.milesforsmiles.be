@@ -121,10 +121,11 @@ class TeamsController extends Controller
 
         //Check if team has not more then 3 members
         if(count($arr_team->relDeelnemers)<4) {
-            $arr_deelnemer = Deelnemers::where('referentienr',$request->referentienr)->first();
+            isset($request->referentienr) ? $referentienr = $request->referentienr : $referentienr = $request->deelnemer;
+            $arr_deelnemer = Deelnemers::where('referentienr',$referentienr)->first();
             if(isset($arr_deelnemer)){
                 if($arr_deelnemer->team_id == null && $arr_deelnemer->hasPaid() == true) {
-                    Deelnemers::where('referentienr', $request->referentienr)->update(['team_id' => $arr_team->id]);
+                    Deelnemers::where('referentienr', $referentienr)->update(['team_id' => $arr_team->id]);
                     $arr_team->refresh();
                     return view('front.mijn-account.teams.teamleden', $this->getTeamledenData($arr_team))->render();
                 }
