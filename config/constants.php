@@ -2,7 +2,7 @@
 
 return [
     'price' => 25,
-    'from_mail' => 'inschrijvingen@milesforsmiles.be',
+    'from_mail' => 'admin@milesforsmiles.be',
     'from_subject_deelnemer' => 'Bedankt voor uw inschrijving voor Miles for Smiles 2019',
     'from_subject_inschrijver' => 'Bedankt voor uw inschrijvingen voor Miles for Smiles 2019',
     'goede_doelen' => [
