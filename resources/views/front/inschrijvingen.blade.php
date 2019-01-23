@@ -7,6 +7,11 @@
             <p class="text-left">@lang('front.inschrijvingen.description')</p>
             <p class="text-left subtitle">@lang('front.inschrijvingen.title')</p>
         </div>
+        @if (session('status') && session('status') == 'no_deelnemers')
+            <div class="error mb-3">
+                @lang('front.inschrijvingen.messages.no_deelnemers')
+            </div>
+        @endif
         <div class="col-12" id="div_tbl_inschrijvingen">
             @include('front.inc.tbl_inschrijvingen')
         </div>

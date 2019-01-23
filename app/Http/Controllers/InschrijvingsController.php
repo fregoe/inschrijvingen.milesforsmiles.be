@@ -60,6 +60,17 @@ class InschrijvingsController extends Controller
             return Redirect::back()->withErrors($validator);
         }
 
+        //Check if there are deelnemers
+        if(session('ss_order_id')) {
+            $arr_deelnemers = Deelnemers::where('order_uuid',session('ss_order_id'))->get();
+            if(count($arr_deelnemers) == 0) {
+                return redirect()->back()->with('status','no_deelnemers');
+            }
+        }
+        else {
+            return redirect()->back()->with('status','no_deelnemers');
+        }
+
         //Check if user exists
         $user = User::where('email',$request->email_administratief)->first();
 

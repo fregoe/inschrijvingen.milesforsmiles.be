@@ -22,6 +22,9 @@ return [
             'submit' => [
                 'text' => 'Bevestig en betaal'
             ]
+        ],
+        'messages' => [
+            'no_deelnemers' => 'Gelieve minstens 1 deelnemer toe te voegen. Dit kan door onderstaande velden in te vullen en op + icoontje te klikken.'
         ]
     ],
     'menu' => [
