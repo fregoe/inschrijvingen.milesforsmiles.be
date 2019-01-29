@@ -63,6 +63,9 @@ class DeelnemersController extends Controller
         if(isset($request->voucher) && !$this->checkVoucherUsed($request->voucher)) {
             $arr_deelnemer->voucher_id = $this->assignVoucher($request->voucher,$arr_deelnemer->id);
             $arr_deelnemer->save();
+
+            $arr_order->totaal += (config('constants.price') - $arr_deelnemer->relVoucher->waarde);
+            $arr_order->save();
         }
         else {
             $arr_order->totaal += config('constants.price');
@@ -143,6 +146,8 @@ class DeelnemersController extends Controller
 
         // Unlink voucher if one was linked
         if($arr_deelnemer->voucher_id !== null) {
+            $arr_order->totaal -= (config('constants.price') - $arr_deelnemer->relVoucher->waarde);
+            $arr_order->save();
             $this->unlinkVoucher($arr_deelnemer->id);
         }
         // Update the order price
