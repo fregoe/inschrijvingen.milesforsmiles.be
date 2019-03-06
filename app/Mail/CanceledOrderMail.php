@@ -21,7 +21,7 @@ class CanceledOrderMail extends Mailable
      *
      * @return void
      */
-    public function __construct(Deelnemers $deelnemer, User $inschrijver)
+    public function __construct($inschrijver,Deelnemers $deelnemer)
     {
         $this->deelnemer    = $deelnemer;
         $this->inschrijver  = $inschrijver;
@@ -34,8 +34,14 @@ class CanceledOrderMail extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.inschrijver_canceled_order_mail',['deelnemer' => $this->deelnemer])
+        $return = $this->view('mails.inschrijver_canceled_order_mail',['deelnemer' => $this->deelnemer])
             ->from(config('constants.from_mail'))
             ->subject(config('constants.from_subject_canceledorder'));
+
+        if(isset($this->inschrijver->email)) {
+            $return->cc($this->inschrijver->email);
+        }
+
+        return $return;
     }
 }
