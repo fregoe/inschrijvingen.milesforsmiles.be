@@ -5,6 +5,9 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use App\Mail\CanceledOrderMail;
+use App\Mail\NoTeamMail;
+
 class Kernel extends ConsoleKernel
 {
     /**
@@ -26,6 +29,18 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+
+        /**********************
+         * CANCEL ORDER MAILS
+         **********************/
+
+        $schedule->job(new CanceledOrderMail())->dailyAt('05:00')->timezone('Europe/Brussels');
+
+        /**********************
+         * NO TEAM MAILS
+         **********************/
+
+        $schedule->job(new NoTeamMail())->weeklyOn('1','06:00')->timezone('Europe/Brussels');
     }
 
     /**

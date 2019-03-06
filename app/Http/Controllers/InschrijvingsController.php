@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NoTeamMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -120,5 +121,12 @@ class InschrijvingsController extends Controller
     public function mijnAccountIndex()
     {
         return view('front.mijn-account.index');
+    }
+
+    public function test()
+    {
+        $order = Orders::find(539);
+
+        return new NoTeamMail($order->relDeelnemers[0]);
     }
 }
