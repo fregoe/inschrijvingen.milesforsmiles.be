@@ -5,8 +5,8 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
-use App\Mail\CanceledOrderMail;
-use App\Mail\NoTeamMail;
+use App\Jobs\NoTeamJob;
+use App\Jobs\PendingOrdersJob;
 
 class Kernel extends ConsoleKernel
 {
@@ -34,13 +34,13 @@ class Kernel extends ConsoleKernel
          * CANCEL ORDER MAILS
          **********************/
 
-        $schedule->job(new CanceledOrderMail())->dailyAt('05:00')->timezone('Europe/Brussels');
+        $schedule->job(new PendingOrdersJob())->dailyAt('05:00')->timezone('Europe/Brussels');
 
         /**********************
          * NO TEAM MAILS
          **********************/
 
-        $schedule->job(new NoTeamMail())->weeklyOn('1','06:00')->timezone('Europe/Brussels');
+        $schedule->job(new NoTeamJob())->weeklyOn('1','06:00')->timezone('Europe/Brussels');
     }
 
     /**
