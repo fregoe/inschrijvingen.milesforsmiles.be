@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use App\Mail\NoTeamMail;
 use App\Models\Deelnemers;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 use App\Mail\CanceledOrderMail;
@@ -56,7 +57,13 @@ trait traitMails
      */
     public function sendNoTeamMail(Deelnemers $deelnemer)
     {
-        Mail::to($deelnemer->email)
-            ->send(new NoTeamMail($deelnemer));
+        try {
+            Mail::to($deelnemer->email)
+                ->send(new NoTeamMail($deelnemer));
+        }
+        catch (Exception $e) {
+            Log::error($e);
+        }
+
     }
 }
