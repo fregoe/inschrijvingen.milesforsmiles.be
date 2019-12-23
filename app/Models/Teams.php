@@ -10,4 +10,9 @@ class Teams extends Model
     {
         return $this->hasMany(\App\Models\Deelnemers::class,'team_id','id');
     }
+
+    public function relTracking()
+    {
+        return $this->hasOne(\App\Models\Trackings::class,'team_id','id');
+    }
 }

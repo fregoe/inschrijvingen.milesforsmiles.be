@@ -6,7 +6,6 @@ use App\Models\Orders;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Input;
 use Carbon\Carbon;
 
 use App\Models\Deelnemers;
@@ -36,19 +35,19 @@ class DeelnemersController extends Controller
         $arr_order = Orders::where('uuid',session('ss_order_id'))->first();
 
         // Validate the request
-        $validator = Validator::make(Input::all(), [
+        $validator = Validator::make($request->all(), [
             'naam'      => 'required',
             'voornaam'  => 'required',
             'email'     => 'required|email'
         ]);
 
         if($validator->fails()) {
-            return view('front.inc.tbl_inschrijvingen',$this->getInschrijvingsData(Input::all()))->withErrors($validator)->render();
+            return view('front.inc.tbl_inschrijvingen',$this->getInschrijvingsData($request->all()))->withErrors($validator)->render();
         }
 
         // Check for valid voucher
         if(isset($request->voucher) && $this->checkVoucherUsed($request->voucher)) {
-            return view('front.inc.tbl_inschrijvingen',$this->getInschrijvingsData(Input::all(),true))->withErrors($validator)->render();
+            return view('front.inc.tbl_inschrijvingen',$this->getInschrijvingsData($request->all(),true))->withErrors($validator)->render();
         }
 
         $arr_deelnemer                  = new Deelnemers();

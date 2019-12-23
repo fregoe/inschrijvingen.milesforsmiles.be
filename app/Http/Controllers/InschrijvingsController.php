@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\InformatieMail;
 use App\Mail\NoTeamMail;
+use App\Models\Trackings;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Validator;
@@ -53,7 +55,7 @@ class InschrijvingsController extends Controller
     public function submitInschrijving(Request $request)
     {
         //Check if administratieve user already exists
-        $validator = Validator::make(Input::all(),[
+        $validator = Validator::make($request->all(),[
             'email_administratief' => 'email'
         ]);
 
@@ -125,8 +127,15 @@ class InschrijvingsController extends Controller
 
     public function test()
     {
-        $order = Orders::find(539);
+        $trackings = Trackings::get();
 
-        return new NoTeamMail($order->relDeelnemers[0]);
+        foreach($trackings as $tracking) {
+            if(isset($tracking->relTeam) && count($tracking->relTeam->relDeelnemers)>0) {
+                foreach($tracking->relTeam->relDeelnemers as $deelnemer) {
+
+                    $this->sendInfoMail($deelnemer);
+                }
+            }
+        }
     }
 }

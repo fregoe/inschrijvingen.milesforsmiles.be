@@ -41,6 +41,8 @@ class Kernel extends ConsoleKernel
          **********************/
 
         $schedule->job(new NoTeamJob())->weeklyOn('1','06:00')->timezone('Europe/Brussels');
+        $schedule->job(new NoTeamJob())->weeklyOn('3','06:00')->timezone('Europe/Brussels');
+        $schedule->job(new NoTeamJob())->weeklyOn('5','06:00')->timezone('Europe/Brussels');
     }
 
     /**

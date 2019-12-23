@@ -14,7 +14,7 @@
 /*
  * FRONT URL
  */
-
+Route::get('/test', 'InschrijvingsController@test')->name('test');
 Route::get('/', 'InschrijvingsController@showInschrijving')->name('index');
 Route::get('/bedankt-voor-uw-inschrijving', 'InschrijvingsController@showBedankt')->name('order.success');
 
