@@ -516,7 +516,7 @@
                                                             <td class="mcnImageContent" valign="top" style="padding-right: 0px; padding-left: 0px; padding-top: 0; padding-bottom: 0; text-align:center;">
 
                                                                 <a href="http://www.milesforsmiles.be" title="" class="" target="_blank">
-                                                                    <img align="center" alt="" src="https://gallery.mailchimp.com/032ed9c5013dcb0a99e92ee82/images/5044aa49-168c-4e94-a206-2144044f0cc2.png" width="235.5" style="max-width:471px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnRetinaImage">
+                                                                    <img align="center" alt="" src="{{ asset('images/banner.png') }}" style="max-width:471px; padding-bottom: 0; display: inline !important; vertical-align: bottom;" class="mcnRetinaImage">
                                                                 </a>
 
                                                             </td>

@@ -9,7 +9,7 @@
                     @lang('front.teams.messages.no_doel')
                 </div>
             @endif
-            <form action="{{ isset($arr_team) ? route('mijn-account.teams.update',['team' => $arr_team->id]) : route('mijn-account.teams.store') }}" method="post">
+            <form action="{{ isset($arr_team) ? route('mijn-account.teams.update',['id' => $arr_team->id]) : route('mijn-account.teams.store') }}" method="post">
                 @csrf
                 {!! isset($arr_team) ? '<input name="_method" type="hidden" value="PUT">':'' !!}
                 <label for="naam">Naam:</label>

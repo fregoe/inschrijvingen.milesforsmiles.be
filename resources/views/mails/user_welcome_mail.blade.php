@@ -14,5 +14,5 @@
     Hiervoor dien je echter eerst jouw wachtwoord in te stellen. Dit kan je doen via onderstaande link. Let op, deze is slechts 1 dag geldig.<br><br>
     {{ $passwordLink }}<br><br>
     Met sportieve groeten,<br><br>
-    Miles for Smiles 2019
+    Miles for Smiles 2020
 @endsection
