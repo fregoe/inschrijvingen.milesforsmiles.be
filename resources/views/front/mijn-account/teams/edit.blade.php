@@ -21,6 +21,7 @@
                     <option value="2" {{ (isset($arr_team) && $arr_team->goed_doel == 2) ? 'selected=selected':'' }}>{{ config('constants.goede_doelen.2') }}</option>
                     <option value="3" {{ (isset($arr_team) && $arr_team->goed_doel == 3) ? 'selected=selected':'' }}>{{ config('constants.goede_doelen.3') }}</option>
                     <option value="4" {{ (isset($arr_team) && $arr_team->goed_doel == 4) ? 'selected=selected':'' }}>{{ config('constants.goede_doelen.4') }}</option>
+                    <option value="5" {{ (isset($arr_team) && $arr_team->goed_doel == 5) ? 'selected=selected':'' }}>{{ config('constants.goede_doelen.5') }}</option>
                 </select>
                 <button type="submit" class="btn btn-primary btn-submit mt-3">Bewaar</button>
             </form>
