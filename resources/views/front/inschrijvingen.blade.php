@@ -12,6 +12,13 @@
                 @lang('front.inschrijvingen.messages.no_deelnemers')
             </div>
         @endif
+
+        @if (session('status') && session('status') == 'no_voucher')
+            <div class="error mb-3">
+                @lang('front.inschrijvingen.messages.no_voucher')
+            </div>
+        @endif
+
         <div class="col-12" id="div_tbl_inschrijvingen">
             @include('front.inc.tbl_inschrijvingen')
         </div>

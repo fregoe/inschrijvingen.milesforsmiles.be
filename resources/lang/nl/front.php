@@ -24,7 +24,8 @@ return [
             ]
         ],
         'messages' => [
-            'no_deelnemers' => 'Gelieve minstens 1 deelnemer toe te voegen. Dit kan door onderstaande velden in te vullen en op + icoontje te klikken.'
+            'no_deelnemers' => 'Gelieve minstens 1 deelnemer toe te voegen. Dit kan door onderstaande velden in te vullen en op + icoontje te klikken.',
+            'no_voucher' => 'Momenteel kunnen enkel inschrijvingen plaatsvinden met een voucher. Betalende inschrijvingen zijn momenteel nog niet mogelijk.'
         ]
     ],
     'menu' => [

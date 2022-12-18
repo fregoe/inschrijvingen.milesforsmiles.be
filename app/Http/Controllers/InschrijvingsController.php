@@ -52,6 +52,75 @@ class InschrijvingsController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
+    public function submitInschrijving_with_payment(Request $request)
+    {
+        //Check if administratieve user already exists
+        $validator = Validator::make($request->all(),[
+            'email_administratief' => 'email'
+        ]);
+
+        if($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
+
+        //Check if there are deelnemers
+        if(session('ss_order_id')) {
+            $arr_deelnemers = Deelnemers::where('order_uuid',session('ss_order_id'))->get();
+            if(count($arr_deelnemers) == 0) {
+                return redirect()->back()->with('status','no_deelnemers');
+            }
+        }
+        else {
+            return redirect()->back()->with('status','no_deelnemers');
+        }
+
+        //Check if user exists
+        $user = User::where('email',$request->email_administratief)->first();
+
+        //Create user if it doesn't exists
+        if(!isset($user)){
+            $user           = new User();
+            $user->email    = $request->email_administratief;
+            $user->save();
+            $user->sendWelcomeEmail();
+        }
+
+        //Assign deelnemers to user
+        Deelnemers::where('order_uuid',session('ss_order_id'))->update(['user_id' => $user->id]);
+
+        //Assign order to user
+        $arr_order                  = Orders::where('uuid',session('ss_order_id'))->first();
+        $arr_order->user_id         = $user->id;
+        $arr_order->betaal_status  = 'Open';
+        $arr_order->save();
+
+        //Create payment if the amount is more then 0
+        if($arr_order->totaal > 0) {
+            $payment = $this->doPayment($arr_order);
+
+            //Save payment id in order
+            $arr_order->betaal_referentie = $payment->id;
+            $arr_order->save();
+
+            // Redirect to payment page
+            return redirect($payment->getCheckoutUrl(), 303);
+        }
+        //Else redirect to order success page
+        else {
+            //Set order as paid
+            $arr_order->betaal_status = 'paid';
+            $arr_order->save();
+
+            $this->sendDeelnemerMails($arr_order);
+            $this->sendInschrijverMails($arr_order);
+            return redirect(route('order.success'));
+        }
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
     public function submitInschrijving(Request $request)
     {
         //Check if administratieve user already exists
@@ -61,6 +130,13 @@ class InschrijvingsController extends Controller
 
         if($validator->fails()) {
             return Redirect::back()->withErrors($validator);
+        }
+
+        //Check if order total is 0€
+        $arr_order = Orders::where('uuid',session('ss_order_id'))->first();
+
+        if($arr_order->totaal > 0) {
+            return redirect()->back()->with('status','no_voucher');
         }
 
         //Check if there are deelnemers
