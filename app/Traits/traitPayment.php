@@ -19,7 +19,7 @@ trait traitPayment
                 'currency' => 'EUR',
                 'value' => number_format($order->totaal,2,'.','')
             ],
-            'description' => 'Inschrijving Miles for Smiles 2019',
+            'description' => 'Inschrijving Miles for Smiles 2023',
             'webhookUrl' => route('webhooks.mollie'),
             'redirectUrl' => route('order.success'),
         ]);

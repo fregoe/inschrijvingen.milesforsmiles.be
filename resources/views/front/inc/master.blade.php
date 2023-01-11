@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>Inschrijvingen Miles For Smiles 2019</title>
+        <title>Inschrijvingen Miles For Smiles 2023</title>
 
         <base href="/" />
 
