@@ -1,7 +1,7 @@
 @extends('front.inc.master')
 
 @section('content')
-
+{{--
     <div class="row">
         <div class="col-12">
             <p class="text-left">@lang('front.inschrijvingen.description')</p>
@@ -44,4 +44,5 @@
             </form>
         </div>
     </div>
+    --}}
 @stop

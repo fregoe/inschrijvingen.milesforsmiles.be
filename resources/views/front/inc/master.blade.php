@@ -53,14 +53,18 @@
         </div>
         <div class="container container-milesforsmiles">
             <div class="row mt-0 mb-3">
-                <div class="col-6 text-center pt-2 {{  Route::is('index') ? 'step-active':'step-not-active' }}">
+                {{-- <div class="col-6 text-center pt-2 {{  Route::is('index') ? 'step-active':'step-not-active' }}">
                     <h1><a href="{{ route('index') }}">@lang('front.menu.subscription')</a></h1>
-                </div>
+                </div>--}}
                 {{--<div class="col-4 text-center pt-2 {{  Route::is('login') ? 'step-active':'step-not-active' }}">
                     <h1><a href="{{ route('login') }}">@lang('front.menu.logon')</a></h1>
                 </div>--}}
-                <div class="col-6 text-center pt-2 {{ Route::is('*mijn-account*') || Route::is('login') ? 'step-active':'step-not-active' }}">
+                {{-- <div class="col-6 text-center pt-2 {{ Route::is('*mijn-account*') || Route::is('login') ? 'step-active':'step-not-active' }}">
                     <h1><a href="{{ route('mijn-account.teams') }}">@lang('front.menu.teams')</a></h1>
+                </div>--}}
+                <div class="col-12">
+                    <p class="text-center">De inschrijvingen zijn momenteel afgesloten.<br>
+                    Tickets voor de after party kunnen nog aan de deur gekocht worden.</p>
                 </div>
             </div>
 
