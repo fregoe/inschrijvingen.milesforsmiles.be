@@ -14,11 +14,11 @@
 /*
  * FRONT URL
  */
-Route::get('/test', 'InschrijvingsController@test')->name('test');
+#Route::get('/test', 'InschrijvingsController@test')->name('test');
 Route::get('/', 'InschrijvingsController@showInschrijving')->name('index');
-Route::get('/bedankt-voor-uw-inschrijving', 'InschrijvingsController@showBedankt')->name('order.success');
+#Route::get('/bedankt-voor-uw-inschrijving', 'InschrijvingsController@showBedankt')->name('order.success');
 
-Route::post('/submit-inschrijving', 'InschrijvingsController@submitInschrijving')->name('inschrijving.submit');
+/*Route::post('/submit-inschrijving', 'InschrijvingsController@submitInschrijving')->name('inschrijving.submit');
 Route::post('/add-inschrijving', 'DeelnemersController@store');
 Route::post('/edit-inschrijving', 'DeelnemersController@editFront');
 Route::post('/update-inschrijving-front', 'DeelnemersController@updateFront');
@@ -26,11 +26,11 @@ Route::post('/remove-inschrijving', 'DeelnemersController@destroy');
 Route::post('/update-inschrijving', 'DeelnemersController@update');
 Route::post('/add-teamlid', 'TeamsController@addTeamlid');
 Route::post('/remove-teamlid', 'TeamsController@removeTeamlid');
-
+*/
 /*
  * PROTECTED URL's
  */
-
+/*
 Route::prefix('mijn-account')->group(function(){
     Route::get('/', 'InschrijvingsController@mijnAccountIndex')->middleware('auth')->name('mijn-account.index');
     Route::get('/inschrijvingen', 'DeelnemersController@showInschrijvingen')->middleware('auth')->name('mijn-account.inschrijvingen');
@@ -43,16 +43,17 @@ Route::prefix('mijn-account')->group(function(){
     Route::put('/teams/aanpassen/{id}','TeamsController@update')->name('mijn-account.teams.update');
     Route::get('/teams/verwijder/{id}','TeamsController@destroy')->name('mijn-account.teams.destroy');
 });
-
+*/
 /*
  * WEB HOOKS
  */
+/*
 Route::post('/webhooks/mollie','PaymentController@mollieWebhook')->name('webhooks.mollie');
-
+*/
 /*
  * AUTH
  */
-
+/*
 Route::get('mijn-account/inloggen','Auth\LoginController@showLoginForm')->name('login');
 Route::post('mijn-account/inloggen','Auth\LoginController@login')->name('login.submit');
 Route::get('/mijn-account/uitloggen','Auth\LoginController@logout')->name('logout');
@@ -62,4 +63,4 @@ Route::get('/mijn-account/wachtwoord-vergeten','Auth\ForgotPasswordController@sh
 Route::post('/mijn-account/wachtwoord-vergeten','Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.resetmail');
 Route::get('/mijn-account/wachtwoord-opnieuw-instellen','Auth\ResetPasswordController@showResetForm')->name('password.reset');
 Route::post('/mijn-account/wachtwoord-opnieuw-instellen','Auth\ResetPasswordController@reset')->name('password.reset.submit');
-
+*/
